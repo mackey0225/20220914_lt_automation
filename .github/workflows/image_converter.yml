@@ -3,7 +3,7 @@ name: Image Converter
 on:
   pull_request_target:
     branches: [ "main" ]
-    types: [ "opened" ]
+  pull_request:
     paths: [ "image/input/before/**.png" ]
 
 jobs:
