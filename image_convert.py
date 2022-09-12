@@ -18,11 +18,12 @@ for image_path in images:
     print(image_path)
 
     image_file_name = os.path.split(image_path)[1]
-
+    image_file_name_no_extension = os.path.splitext(image_file_name)[0]
+    
     # 画像の加工 今回は説明の為、簡略化（invert加工のみ）
     image = Image.open(image_path).convert('RGB')
     image_invert = ImageOps.invert(image)
-    image_invert.save("./image/output/" + image_file_name + "_invert.png")
+    image_invert.save("./image/output/" + image_file_name_no_extension + "_invert.png")
 
     print("画像変換完了：" + image_file_name)
 
