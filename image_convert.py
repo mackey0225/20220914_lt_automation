@@ -14,6 +14,8 @@ print("処理開始")
 os.mkdir(check_dir_path)
 
 images = glob.glob("./image/input/*.png")
+print(images)
+
 for image_path in images:
     print(image_path)
 
