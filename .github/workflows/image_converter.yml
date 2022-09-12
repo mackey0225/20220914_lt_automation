@@ -4,7 +4,7 @@ on:
   pull_request_target:
     branches: [ "main" ]
   pull_request:
-    paths: [ "image/input/before/**.png" ]
+    paths: [ "image/input/**.png" ]
 
 jobs:
   execute:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with: 
+          ref: ${{ github.head_ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -27,7 +29,7 @@ jobs:
         run: |
           python image_convert.py
 
-      - name: Check for modified files in Spotless
+      - name: Check for modified files in Image Converter
         id: git-check
         run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
 
